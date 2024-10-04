@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-   origin: 'https://taskmanager-1-9hfl.onrender.com',
+   origin: 'https://taskmanager-ten-pi.vercel.app',
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
