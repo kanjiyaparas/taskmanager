@@ -8,17 +8,20 @@ const protectRoute = async (req, res, next) => {
     if (token) {
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
-      const resp = await User.findById(decodedToken.userId).select(
-        "isAdmin email"
-      );
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      if(decodedToken) return next()
 
-      req.user = {
-        email: resp.email,
-        isAdmin: resp.isAdmin,
-        userId: decodedToken.userId,
-      };
+      // const resp = await User.findById(decodedToken.userId).select(
+      //   "isAdmin email"
+      // );
 
-      next();
+      // req.user = {
+      //   email: resp.email,
+      //   isAdmin: resp.isAdmin,
+      //   userId: decodedToken.userId,
+      // };
+      // next();
+
     } else {
       return res
         .status(401)
