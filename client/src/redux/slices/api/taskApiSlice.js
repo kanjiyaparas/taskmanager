@@ -2,6 +2,7 @@ import { PiBatteryPlusVerticalDuotone } from "react-icons/pi";
 import { apiSlice} from "../apiSlice" 
 
 const TASKS_URL = "/task";
+const Token = localStorage.getItem("token")
 
 export const taskApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,6 +11,10 @@ export const taskApiSlice = apiSlice.injectEndpoints({
                 url : `${TASKS_URL}/dashboard`,
                 method: "GET",
                 credentials: "include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             }),
         }),
 
@@ -18,6 +23,10 @@ export const taskApiSlice = apiSlice.injectEndpoints({
                 url : `${TASKS_URL}?stage=${strQuery}&isTrashed=${isTrashed}&search=${search}`,
                 method: "GET",
                 credentials: "include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             }),
         }),
 
@@ -26,7 +35,11 @@ export const taskApiSlice = apiSlice.injectEndpoints({
                 url:`${TASKS_URL}/create`,
                 method : "POST",
                 body:data,
-                credentials:"include"
+                credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
         duplicatetask : builder.mutation({
@@ -34,7 +47,11 @@ export const taskApiSlice = apiSlice.injectEndpoints({
                 url:`${TASKS_URL}/duplicate/${id}`,
                 method : "POST",
                 body:{},
-                credentials:"include"
+                credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
         updatetask : builder.mutation({
@@ -42,7 +59,11 @@ export const taskApiSlice = apiSlice.injectEndpoints({
                 url:`${TASKS_URL}/update/${data._id}`,
                 method : "PUT",
                 body:data,
-                credentials:"include"
+                credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -50,7 +71,11 @@ export const taskApiSlice = apiSlice.injectEndpoints({
             query : ({id}) =>({
                 url:`${TASKS_URL}/${id}`,
                 method : "DELETE",
-                credentials:"include"
+                credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -58,7 +83,11 @@ export const taskApiSlice = apiSlice.injectEndpoints({
             query: (id) =>({
                 url:`${TASKS_URL}/${id}`,
                 method : 'GET',
-                credentials:"include"
+                credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -67,7 +96,11 @@ export const taskApiSlice = apiSlice.injectEndpoints({
                 // url:`${TASKS_URL}/${id}`,
                 method : 'POST',
                 body:data,
-                credentials:"include"
+                credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         })
 
