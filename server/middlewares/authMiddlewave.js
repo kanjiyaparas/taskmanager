@@ -6,7 +6,7 @@ const protectRoute = async (req, res, next) => {
     let token = req.cookies?.token;
 
     if (token) {
-      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      // const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
       const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
       if(decodedToken) return next()
