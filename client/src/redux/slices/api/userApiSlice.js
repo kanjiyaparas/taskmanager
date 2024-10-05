@@ -1,6 +1,7 @@
 import { apiSlice } from "../apiSlice"
 
 const USER_URL = '/user'
+const Token = localStorage.getItem("token")
 
 export const userApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,6 +11,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 method : "PUT",
                 body: data,
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -18,6 +23,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 url: `${USER_URL}/get-team`,
                 method : "GET",
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -26,6 +35,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 url: `${USER_URL}/${id}`,
                 method : "DELETE",
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
         userAction : builder.mutation({
@@ -34,6 +47,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 method : "PUT",
                 body:data,
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -42,6 +59,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 url: `${USER_URL}/notifications`,
                 method : "GET",
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -51,6 +72,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 method : "PUT",
                 body:data,
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
 
@@ -60,6 +85,10 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 method : "PUT",
                 body:data,
                 credentials:"include",
+                 headers: {
+      "Content-Type": "application/json", // example header
+      "token": Token // if you need authorization
+    },
             })
         }),
     })
